@@ -10,12 +10,6 @@ function isAValidMessage(message) {
   for (let i = 0; i < splitted.length; i += 2) {
     let numberPart = splitted[i];
     let textPart = splitted[i + 1];
-    if (!/^\d+$/.test(numberPart)){
-      return false;
-    }
-    if (!/^[a-zA-Z]+$/.test(textPart)){
-        return false;
-      }
     if (Number(numberPart) !== textPart.length){
       return false;
     } 
