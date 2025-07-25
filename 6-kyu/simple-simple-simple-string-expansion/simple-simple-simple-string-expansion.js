@@ -1,13 +1,13 @@
 function stringExpansion(s) {
-  let result = "";
-    let repeatCount = 1;
-    for (let i = 0; i < s.length; i++) {
-        let char = s[i];
-        if (!isNaN(char) && char !== ' ') { 
-            repeatCount = Number(char);
-        } else {
-            result += char.repeat(repeatCount);
-        }
+  let arr = s.split('')
+  let result = []
+  let repeatCount = 1;
+  for(let i = 0; i<arr.length; i++){
+    if(/[0-9]/.test(arr[i])){
+      repeatCount = Number(arr[i])
+    }else if(/[a-zA-Z]/.test(arr[i])){
+      result.push(arr[i].repeat(repeatCount));
     }
-    return result;
+  }
+  return result.join('')
 }
