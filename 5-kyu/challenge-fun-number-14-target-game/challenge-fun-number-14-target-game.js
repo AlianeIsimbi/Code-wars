@@ -1,6 +1,10 @@
 function targetGame(vals) {
-  if (vals.length === 0) return 0;
-  if (vals.length === 1) return Math.max(0, vals[0]);
+  if (vals.length === 0){
+    return 0; 
+  } 
+  if (vals.length === 1){
+    return Math.max(0, vals[0]); 
+  } 
   let prev2 = 0;
   let prev1 = Math.max(0, vals[0]);
   for (let i = 1; i < vals.length; i++) {
