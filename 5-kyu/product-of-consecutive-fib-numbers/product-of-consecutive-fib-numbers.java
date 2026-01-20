@@ -1,25 +1,14 @@
 public class ProdFib {
-  
-  public static long[] productFib(long prod) {
-    long fn = 0;
-    long fn1 = 1;
-    int largestInt = Integer.MAX_VALUE;
-    for(int i = 0; i<largestInt; i++){
-         long product = fn * fn1;
 ​
-            if (product == prod) {
-                return new long[] { fn, fn1, 1 };
-            }
-​
-            if (product > prod) {
-                return new long[] { fn, fn1, 0 };
-            }
-​
-            long next = fn + fn1;
-            fn = fn1;
-            fn1 = next;
+    public static long[] productFib(long prod) {
+        long a = 0;
+        long b = 1;
+        while (a * b < prod) {
+            long next = a + b;
+            a = b;
+            b = next;
         }
-​
-        return new long[] { fn, fn1, 0 };
-   }
+        return new long[] { a, b, a * b == prod ? 1 : 0 };
+    }
 }
+​
