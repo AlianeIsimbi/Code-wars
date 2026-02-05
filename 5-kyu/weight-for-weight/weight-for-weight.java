@@ -1,44 +1,17 @@
+import java.util.Comparator;
+import java.util.Arrays;
+​
 public class WeightSort {
-​
-    public static String orderWeight(String strng) {
-        strng = strng.trim();
-        if (strng.equals("")) return "";
-        String[] arr = strng.split(" ");
-        for (int i = 0; i < arr.length; i++) {
-​
-            for (int j = i + 1; j < arr.length; j++) {
-​
-                int weight1 = digitSum(arr[i]);
-                int weight2 = digitSum(arr[j]);
-​
-                if (weight1 > weight2 ||
-                   (weight1 == weight2 && arr[i].compareTo(arr[j]) > 0)) {
-​
-                    String temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
-        String result = "";
-​
-        for (int i = 0; i < arr.length; i++) {
-            result += arr[i];
-​
-            if (i != arr.length - 1) {
-                result += " ";
-            }
-        }
-        return result;
-    }
-    private static int digitSum(String s) {
-​
-        int sum = 0;
-​
-        for (int i = 0; i < s.length(); i++) {
-            sum += Character.getNumericValue(s.charAt(i));
-        }
-        return sum;
-    }
+  public static String orderWeight(String string) {
+    String[] split = string.split(" ");
+    Arrays.sort(split, new Comparator<String>() {
+      public int compare(String a, String b) {
+        int aWeight = a.chars().map(c -> Character.getNumericValue(c)).sum();
+        int bWeight = b.chars().map(c -> Character.getNumericValue(c)).sum();
+        return aWeight - bWeight != 0 ? aWeight - bWeight : a.compareTo(b);
+      }
+    });
+    return String.join(" ", split);
+  }
 }
 ​
